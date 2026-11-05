@@ -168,7 +168,8 @@ window.PORTFOLIO_PROJECTS = [
     description: { en: 'An immersive study timer with session tracking, weekly statistics, custom themes, and a PWA experience designed to work offline.', ar: 'مؤقت مذاكرة بوضع تركيز غامر، وسجل جلسات وإحصاءات أسبوعية وسمات متعددة ودعم تثبيت التطبيق والعمل دون اتصال.' },
     tags: ['React', 'PWA', 'Focus tools'],
     url: 'https://tenvylo.pages.dev/',
-    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Timer'
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Timer',
+    showcaseUrl: 'https://mohammedalhinaki-cloud.github.io/Timer/'
   },
   {
     id: 'easyvocab', type: 'android', number: '009', theme: 'easyvocab', icon: 'Aa',
@@ -176,7 +177,7 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'English vocabulary learning app', ar: 'تطبيق لتعلم مفردات الإنجليزية' },
     description: { en: 'A native Android vocabulary-learning project with flashcards, quizzes, American English text-to-speech, and local learning data.', ar: 'مشروع تطبيق أندرويد لتعلم المفردات الإنجليزية بالبطاقات التعليمية والاختبارات والنطق الأمريكي وحفظ بيانات التعلم محليًا.' },
     tags: ['Kotlin', 'Jetpack Compose', 'Android'],
-    url: 'https://mohammedalhinaki-cloud.github.io/projects/easyvocab/',
+    url: 'https://mohammedalhinaki-cloud.github.io/EasyVocap/',
     sourceUrl: 'https://github.com/mohammedalhinaki-cloud/EasyVocap'
   },
   {
@@ -185,7 +186,7 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'Offline Quran audio player for Android', ar: 'مشغل صوتيات القرآن لأندرويد دون إنترنت' },
     description: { en: 'An offline Quran audio player for recitations by Sheikh Mohammed Burhajy, with surah and verse selection, background playback, and saved listening position.', ar: 'مشغل قرآن MP3 لتلاوات الشيخ محمد برهجي، مع اختيار السورة والآية والتشغيل في الخلفية وحفظ موضع الاستماع، ومصمم للعمل دون إنترنت.' },
     tags: ['Kotlin', 'Media3', 'Android'],
-    url: 'https://mohammedalhinaki-cloud.github.io/projects/quran-mp3/',
+    url: 'https://mohammedalhinaki-cloud.github.io/Burhajy/',
     sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Burhajy'
   },
   {
@@ -194,7 +195,7 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'Offline Quran class tracking app', ar: 'تطبيق لمتابعة حلقات القرآن دون اتصال' },
     description: { en: 'An offline Android WebView application for organizing Quran memorization plans, logging attendance and progress, reviewing schedules, and exporting local backups.', ar: 'تطبيق أندرويد يعمل دون إنترنت لإعداد خطط حفظ القرآن وتسجيل الحضور والإنجاز والمراجعة وتصدير نسخ احتياطية محلية.' },
     tags: ['Java', 'WebView', 'Offline'],
-    url: 'https://mohammedalhinaki-cloud.github.io/projects/waraqah/',
+    url: 'https://mohammedalhinaki-cloud.github.io/Page/',
     sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Page'
   },
   {
@@ -204,8 +205,8 @@ window.PORTFOLIO_PROJECTS = [
     description: { en: 'An Arabic istighfar counter with open and goal-based modes, saved progress, and light/dark themes.', ar: 'تطبيق أندرويد لعدّ الاستغفار مع أهداف مخصصة وحفظ التقدم والثيمين الفاتح والداكن.' },
     tags: ['Kotlin', 'Jetpack Compose', 'Android'],
     linkKind: 'code',
-    url: 'https://mohammedalhinaki-cloud.github.io/projects/astagfr/',
-    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/mohammedalhinaki-cloud.github.io/tree/main/code/astagfr'
+    url: 'https://mohammedalhinaki-cloud.github.io/Astagfr/',
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Astagfr'
   }
 ];
 
@@ -230,7 +231,7 @@ const i18n = {
     factEducation:'EDUCATION',factEducationValue:'Computer Science · Qassim University',factFocus:'FOCUS',factFocusValue:'Web experiences · UI / UX · Android',factTools:'TOOLS & TECHNOLOGIES',
     contactKicker:'03 / GET IN TOUCH',contactTitle:'Let\'s build something<br>meaningful.',contactDescription:'Interested in my projects or a development opportunity? You can find me on GitHub.',contactButton:'View my GitHub',
     footerText:'Designed as a personal developer portfolio.',backTop:'Back to top ↑',
-    launch:'View live project', source:'View source on GitHub',code:'View code', private:'Private repository',privateNote:'Code walkthrough available on request', platform:'ANDROID APPLICATION'
+    launch:'View live project', source:'View source on GitHub',showcase:'Project page',code:'View code', private:'Private repository',privateNote:'Code walkthrough available on request', platform:'ANDROID APPLICATION'
   },
   ar: {
     skip:'الانتقال إلى المشاريع',navWork:'المشاريع',navAbout:'عني',navContact:'التواصل',
@@ -249,7 +250,7 @@ const i18n = {
     factEducation:'التعليم',factEducationValue:'علوم الحاسب · جامعة القصيم',factFocus:'مجالات الاهتمام',factFocusValue:'تطوير الويب · تجربة المستخدم · أندرويد',factTools:'الأدوات والتقنيات',
     contactKicker:'03 / تواصل معي',contactTitle:'لنبنِ شيئًا<br>له قيمة.',contactDescription:'مهتم بمشاريعي أو بفرصة تدريب وتطوير؟ يمكنك الوصول إلى حسابي على GitHub.',contactButton:'زيارة GitHub',
     footerText:'معرض أعمال شخصي لمشاريع التطوير.',backTop:'العودة للأعلى ↑',
-    launch:'زيارة الموقع',source:'عرض الكود على GitHub',code:'عرض الكود',private:'مستودع خاص',privateNote:'يمكن شرح الكود عند الطلب',platform:'تطبيق أندرويد'
+    launch:'زيارة الموقع',source:'عرض الكود على GitHub',showcase:'صفحة المشروع',code:'عرض الكود',private:'مستودع خاص',privateNote:'يمكن شرح الكود عند الطلب',platform:'تطبيق أندرويد'
   }
 };
 const PROJECTS = window.PORTFOLIO_PROJECTS || [];
@@ -260,8 +261,9 @@ function projectCard(project,index = 0) {
   const t=i18n[currentLang], name=project.title[currentLang], category=project.category[currentLang];
   const linkText = project.linkKind === 'source' ? t.source : project.linkKind === 'code' ? t.code : t.launch;
   const link=project.url ? `<a class="project-open" href="${safe(project.url)}" target="_blank" rel="noopener noreferrer" aria-label="${safe(linkText)}: ${safe(name)}">${safe(linkText)} <span aria-hidden="true">↗</span></a>` : `<div class="private-label"><span class="lock-icon">◒</span> ${safe(t.private)}<small>${safe(t.privateNote)}</small></div>`;
+  const showcaseLink = project.showcaseUrl ? `<a class="project-open project-source-link" href="${safe(project.showcaseUrl)}" target="_blank" rel="noopener noreferrer">${safe(t.showcase)} <span aria-hidden="true">↗</span></a>` : '';
   const sourceLink = project.sourceUrl ? `<a class="project-open project-source-link" href="${safe(project.sourceUrl)}" target="_blank" rel="noopener noreferrer">${safe(t.source)} <span aria-hidden="true">↗</span></a>` : '';
-  return `<article class="project-card theme-${safe(project.theme)}" style="--card-order:${Math.min(8,Math.max(0,index))}"><div class="project-art"><div class="art-meta"><span>${safe(project.number)} / ${safe(project.type==='android'?'APP':'WEB')}</span><span>↗</span></div><div class="art-main"><span class="art-icon">${safe(project.icon)}</span><span class="art-title">${safe(name)}</span></div><span class="art-bottom">${safe(category)}</span></div><div class="project-info"><div class="project-category">${safe(category)}</div><h3>${safe(name)}</h3><p>${safe(project.description[currentLang])}</p><div class="tags">${project.tags.map(x=>`<span>${safe(x)}</span>`).join('')}</div><div class="project-footer">${link}${sourceLink}</div></div></article>`;
+  return `<article class="project-card theme-${safe(project.theme)}" style="--card-order:${Math.min(8,Math.max(0,index))}"><div class="project-art"><div class="art-meta"><span>${safe(project.number)} / ${safe(project.type==='android'?'APP':'WEB')}</span><span>↗</span></div><div class="art-main"><span class="art-icon">${safe(project.icon)}</span><span class="art-title">${safe(name)}</span></div><span class="art-bottom">${safe(category)}</span></div><div class="project-info"><div class="project-category">${safe(category)}</div><h3>${safe(name)}</h3><p>${safe(project.description[currentLang])}</p><div class="tags">${project.tags.map(x=>`<span>${safe(x)}</span>`).join('')}</div><div class="project-footer">${link}${showcaseLink}${sourceLink}</div></div></article>`;
 }
 function renderProjects(){document.getElementById('projects-grid').innerHTML=PROJECTS.filter(p=>currentFilter==='all'||p.type===currentFilter).map((project,index)=>projectCard(project,index)).join('');}
 function translate(){
