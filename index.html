@@ -26,12 +26,39 @@
 @media(max-width:980px){.container{width:min(100% - 48px,760px)}.hero{grid-template-columns:1fr;gap:18px;padding-block:75px 58px}.hero-copy{max-width:650px}.hero-visual{height:385px}.interface-window{width:390px}.top-note{inset-inline-start:12%}.bottom-note{inset-inline-end:10%}.stats-strip{grid-template-columns:1fr 1fr 1.2fr}.stat{padding:24px 17px}.featured-project{grid-template-columns:1fr}.featured-content{min-height:375px}.featured-preview{min-height:310px}.preview-window{top:37px;left:25%;max-width:65%}.about-grid{gap:35px}.hero h1{font-size:clamp(44px,7vw,65px)}}
 @media(max-width:680px){.container{width:calc(100% - 36px)}.nav-wrap{height:70px}.brand-caption{font-size:10px}.brand-caption small{font-size:8px}.brand-mark{width:38px;height:38px;font-size:23px}.nav-links{display:none}.nav-actions{gap:12px}.lang-switch{font-size:12px;min-width:68px}.hero{padding-block:62px 30px;min-height:auto}.hero h1{font-size:clamp(36px,10.2vw,55px);letter-spacing:-.055em}.eyebrow{font-size:9px;line-height:1.5}.hero-description{font-size:14px}.hero-visual{height:343px}.interface-window{width:300px}.window-heading{font-size:26px}.window-body{padding:20px}.window-sample{height:104px;margin-top:18px}.sample-shape{min-width:36px}.top-note{top:0;inset-inline-start:0;font-size:8px}.bottom-note{bottom:0;inset-inline-end:0;font-size:8px}.orbit{width:315px;height:315px}.orbit-b{width:270px;height:270px}.stats-strip{grid-template-columns:1fr 1fr}.stat{padding:25px 10px}.stat strong{font-size:28px}.stat>span:not(.starburst){font-size:10px}.stat-phrase{grid-column:1/-1;padding:15px 0;justify-content:flex-start;border-top:1px solid var(--line)}.stat:first-child{border-inline-end:1px solid var(--line)}.stat:nth-child(2){border:0}.section{padding-block:65px 40px}.section-header{display:block}.section-header h2{font-size:36px}.section-intro{margin-top:14px}.featured-content{padding:24px 23px 32px;min-height:410px}.card-index{font-size:9px}.card-featured-dot{font-size:8px}.featured-preview{min-height:260px}.preview-window{width:300px;max-width:80%;inset-inline-start:10%;height:250px;top:26px}.preview-content h4{font-size:22px}.preview-tiles div{height:52px}.work-toolbar{flex-direction:column;align-items:flex-start;gap:12px}.projects-grid{grid-template-columns:1fr}.project-info p{min-height:auto}.about-grid{grid-template-columns:1fr;gap:16px}.about-copy p{font-size:15px}.contact-section{padding-block:35px 70px}.contact-panel{padding:33px 26px;display:block}.contact-panel h2{font-size:34px}.contact-button{margin-top:25px}.footer{flex-wrap:wrap;gap:9px}.footer span:nth-child(2){flex-basis:100%;order:3}}
 @media(max-width:380px){.hero-actions{flex-direction:column;align-items:stretch}.primary-button,.secondary-button{width:100%}.hero h1{font-size:34px}.art-title{font-size:20px}.featured-project .card-upper{align-items:flex-start}.card-featured-dot{max-width:120px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Motion system — meaningful feedback, restrained movement, no animation-only content. */
+.reading-progress{position:fixed;inset:0 auto auto 0;height:3px;width:0;background:linear-gradient(90deg,#65d6ba,#c5fff0);z-index:100;pointer-events:none;box-shadow:0 0 18px #8decc266;transition:width .1s linear}
+@keyframes portfolio-enter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes portfolio-card{from{opacity:0;transform:translateY(19px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes portfolio-float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
+@keyframes portfolio-glow{0%,100%{opacity:.25;filter:blur(88px)}50%{opacity:.44;filter:blur(98px)}}
+@keyframes portfolio-pulse{0%,100%{box-shadow:0 0 0 5px rgba(142,240,199,.11)}50%{box-shadow:0 0 0 9px rgba(142,240,199,.035)}}
+.hero-copy>*{animation:portfolio-enter .75s cubic-bezier(.18,.73,.2,1) both}
+.hero-copy>*:nth-child(2){animation-delay:.09s}.hero-copy>*:nth-child(3){animation-delay:.17s}.hero-copy>*:nth-child(4){animation-delay:.24s}.hero-copy>*:nth-child(5){animation-delay:.3s}
+.hero-visual .interface-window{animation:portfolio-float 7s ease-in-out infinite}
+.hero-visual:hover .interface-window{animation-play-state:paused}
+.ambient{animation:portfolio-glow 11s ease-in-out infinite}.ambient-two{animation-delay:-5s}
+.signal{animation:portfolio-pulse 3.5s ease-in-out infinite}
+.reveal-section{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.21,.7,.16,1)}
+.reveal-section.is-visible{opacity:1;transform:none}
+.project-card{animation:portfolio-card .54s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--card-order,0) * 65ms);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.project-card:hover{transform:translateY(-7px);box-shadow:0 25px 50px #0004;border-color:#547980}
+.project-card:hover .art-icon{transform:scale(1.08) rotate(-3deg)}
+.project-card .art-icon{transition:transform .35s cubic-bezier(.15,.8,.3,1)}
+.featured-project{transition:box-shadow .35s,border-color .35s}
+.featured-project:hover{border-color:#6a9b92;box-shadow:0 26px 64px #0003}
+.feature-link .arrow,.feature-link span:last-child,.primary-button .arrow,.secondary-button .arrow{transition:transform .26s ease}
+.feature-link:hover span:last-child,.primary-button:hover .arrow,.secondary-button:hover .arrow{transform:translate(3px,-3px)}
+@media(hover:none){.project-card:hover{transform:none;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.hero-copy>*,.hero-visual .interface-window,.ambient,.signal,.project-card{animation:none!important}.reveal-section{opacity:1!important;transform:none!important}.reading-progress{transition:none!important}
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 </style>
   <title>Mohammed | Developer Portfolio</title>
 </head>
 <body>
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#work" data-i18n="skip">Skip to projects</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
@@ -131,7 +158,8 @@ window.PORTFOLIO_PROJECTS = [
     description: { en: 'A privacy-first Arabic web tool for checking Wi-Fi security settings, assessing an entered password locally, and generating stronger passwords. Includes an optional local network scanner.', ar: 'أداة ويب عربية لتقييم إعدادات أمان Wi-Fi وتحليل قوة كلمة المرور المدخلة محليًا وتوليد كلمات قوية، مع مساعد اختياري لفحص الشبكات على الجهاز.' },
     tags: ['React', 'TypeScript', 'Wi-Fi security'],
     linkKind: 'source',
-    url: 'https://github.com/mohammedalhinaki-cloud/WiFi'
+    url: 'https://mohammedalhinaki-cloud.github.io/WiFi/',
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/WiFi'
   },
   {
     id: 'tenvylo', type: 'web', number: '008', theme: 'tenvylo', icon: '◷',
@@ -148,8 +176,8 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'English vocabulary learning app', ar: 'تطبيق لتعلم مفردات الإنجليزية' },
     description: { en: 'A native Android vocabulary-learning project with flashcards, quizzes, American English text-to-speech, and local learning data.', ar: 'مشروع تطبيق أندرويد لتعلم المفردات الإنجليزية بالبطاقات التعليمية والاختبارات والنطق الأمريكي وحفظ بيانات التعلم محليًا.' },
     tags: ['Kotlin', 'Jetpack Compose', 'Android'],
-    linkKind: 'source',
-    url: 'https://github.com/mohammedalhinaki-cloud/EasyVocap'
+    url: 'https://mohammedalhinaki-cloud.github.io/projects/easyvocab/',
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/EasyVocap'
   },
   {
     id: 'quranmp3', type: 'android', number: '010', theme: 'quranmp3', icon: '♫',
@@ -157,8 +185,8 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'Offline Quran audio player for Android', ar: 'مشغل صوتيات القرآن لأندرويد دون إنترنت' },
     description: { en: 'An offline Quran audio player for recitations by Sheikh Mohammed Burhajy, with surah and verse selection, background playback, and saved listening position.', ar: 'مشغل قرآن MP3 لتلاوات الشيخ محمد برهجي، مع اختيار السورة والآية والتشغيل في الخلفية وحفظ موضع الاستماع، ومصمم للعمل دون إنترنت.' },
     tags: ['Kotlin', 'Media3', 'Android'],
-    linkKind: 'source',
-    url: 'https://github.com/mohammedalhinaki-cloud/Burhajy'
+    url: 'https://mohammedalhinaki-cloud.github.io/projects/quran-mp3/',
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Burhajy'
   },
   {
     id: 'waraqah', type: 'android', number: '011', theme: 'waraqah', icon: '▤',
@@ -166,8 +194,8 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'Offline Quran class tracking app', ar: 'تطبيق لمتابعة حلقات القرآن دون اتصال' },
     description: { en: 'An offline Android WebView application for organizing Quran memorization plans, logging attendance and progress, reviewing schedules, and exporting local backups.', ar: 'تطبيق أندرويد يعمل دون إنترنت لإعداد خطط حفظ القرآن وتسجيل الحضور والإنجاز والمراجعة وتصدير نسخ احتياطية محلية.' },
     tags: ['Java', 'WebView', 'Offline'],
-    linkKind: 'source',
-    url: 'https://github.com/mohammedalhinaki-cloud/Page'
+    url: 'https://mohammedalhinaki-cloud.github.io/projects/waraqah/',
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Page'
   },
   {
     id: 'astagfr', type: 'android', number: '012', theme: 'astagfr', icon: '○',
@@ -175,7 +203,8 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'Native Android application', ar: 'تطبيق أندرويد أصلي' },
     description: { en: 'An Arabic istighfar counter with open and goal-based modes, saved progress, and light/dark themes.', ar: 'تطبيق أندرويد لعدّ الاستغفار مع أهداف مخصصة وحفظ التقدم والثيمين الفاتح والداكن.' },
     tags: ['Kotlin', 'Jetpack Compose', 'Android'],
-    url: null /* Repository is private; do not link to an inaccessible page for employers. */
+    linkKind: 'code',
+    url: 'https://mohammedalhinaki-cloud.github.io/projects/astagfr/'
   }
 ];
 
@@ -200,7 +229,7 @@ const i18n = {
     factEducation:'EDUCATION',factEducationValue:'Computer Science · Qassim University',factFocus:'FOCUS',factFocusValue:'Web experiences · UI / UX · Android',factTools:'TOOLS & TECHNOLOGIES',
     contactKicker:'03 / GET IN TOUCH',contactTitle:'Let\'s build something<br>meaningful.',contactDescription:'Interested in my projects or a development opportunity? You can find me on GitHub.',contactButton:'View my GitHub',
     footerText:'Designed as a personal developer portfolio.',backTop:'Back to top ↑',
-    launch:'View live project', source:'View source on GitHub', private:'Private repository',privateNote:'Code walkthrough available on request', platform:'ANDROID APPLICATION'
+    launch:'View live project', source:'View source on GitHub',code:'View code', private:'Private repository',privateNote:'Code walkthrough available on request', platform:'ANDROID APPLICATION'
   },
   ar: {
     skip:'الانتقال إلى المشاريع',navWork:'المشاريع',navAbout:'عني',navContact:'التواصل',
@@ -219,21 +248,21 @@ const i18n = {
     factEducation:'التعليم',factEducationValue:'علوم الحاسب · جامعة القصيم',factFocus:'مجالات الاهتمام',factFocusValue:'تطوير الويب · تجربة المستخدم · أندرويد',factTools:'الأدوات والتقنيات',
     contactKicker:'03 / تواصل معي',contactTitle:'لنبنِ شيئًا<br>له قيمة.',contactDescription:'مهتم بمشاريعي أو بفرصة تدريب وتطوير؟ يمكنك الوصول إلى حسابي على GitHub.',contactButton:'زيارة GitHub',
     footerText:'معرض أعمال شخصي لمشاريع التطوير.',backTop:'العودة للأعلى ↑',
-    launch:'زيارة الموقع',source:'عرض الكود على GitHub',private:'مستودع خاص',privateNote:'يمكن شرح الكود عند الطلب',platform:'تطبيق أندرويد'
+    launch:'زيارة الموقع',source:'عرض الكود على GitHub',code:'عرض الكود',private:'مستودع خاص',privateNote:'يمكن شرح الكود عند الطلب',platform:'تطبيق أندرويد'
   }
 };
 const PROJECTS = window.PORTFOLIO_PROJECTS || [];
 let currentLang = 'en';
 let currentFilter = 'all';
 const safe = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function projectCard(project) {
+function projectCard(project,index = 0) {
   const t=i18n[currentLang], name=project.title[currentLang], category=project.category[currentLang];
-  const linkText = project.linkKind === 'source' ? t.source : t.launch;
+  const linkText = project.linkKind === 'source' ? t.source : project.linkKind === 'code' ? t.code : t.launch;
   const link=project.url ? `<a class="project-open" href="${safe(project.url)}" target="_blank" rel="noopener noreferrer" aria-label="${safe(linkText)}: ${safe(name)}">${safe(linkText)} <span aria-hidden="true">↗</span></a>` : `<div class="private-label"><span class="lock-icon">◒</span> ${safe(t.private)}<small>${safe(t.privateNote)}</small></div>`;
   const sourceLink = project.sourceUrl ? `<a class="project-open project-source-link" href="${safe(project.sourceUrl)}" target="_blank" rel="noopener noreferrer">${safe(t.source)} <span aria-hidden="true">↗</span></a>` : '';
-  return `<article class="project-card theme-${safe(project.theme)}"><div class="project-art"><div class="art-meta"><span>${safe(project.number)} / ${safe(project.type==='android'?'APP':'WEB')}</span><span>↗</span></div><div class="art-main"><span class="art-icon">${safe(project.icon)}</span><span class="art-title">${safe(name)}</span></div><span class="art-bottom">${safe(category)}</span></div><div class="project-info"><div class="project-category">${safe(category)}</div><h3>${safe(name)}</h3><p>${safe(project.description[currentLang])}</p><div class="tags">${project.tags.map(x=>`<span>${safe(x)}</span>`).join('')}</div><div class="project-footer">${link}${sourceLink}</div></div></article>`;
+  return `<article class="project-card theme-${safe(project.theme)}" style="--card-order:${Math.min(8,Math.max(0,index))}"><div class="project-art"><div class="art-meta"><span>${safe(project.number)} / ${safe(project.type==='android'?'APP':'WEB')}</span><span>↗</span></div><div class="art-main"><span class="art-icon">${safe(project.icon)}</span><span class="art-title">${safe(name)}</span></div><span class="art-bottom">${safe(category)}</span></div><div class="project-info"><div class="project-category">${safe(category)}</div><h3>${safe(name)}</h3><p>${safe(project.description[currentLang])}</p><div class="tags">${project.tags.map(x=>`<span>${safe(x)}</span>`).join('')}</div><div class="project-footer">${link}${sourceLink}</div></div></article>`;
 }
-function renderProjects(){document.getElementById('projects-grid').innerHTML=PROJECTS.filter(p=>currentFilter==='all'||p.type===currentFilter).map(projectCard).join('');}
+function renderProjects(){document.getElementById('projects-grid').innerHTML=PROJECTS.filter(p=>currentFilter==='all'||p.type===currentFilter).map((project,index)=>projectCard(project,index)).join('');}
 function translate(){
   const t=i18n[currentLang];document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
   document.title=currentLang==='ar'?'محمد | معرض الأعمال':'Mohammed | Developer Portfolio';
@@ -247,6 +276,35 @@ for (const button of document.querySelectorAll('.filter'))button.addEventListene
 try{if(localStorage.getItem('portfolio-language')==='ar')currentLang='ar'}catch(_){}
 document.getElementById('year').textContent=String(new Date().getFullYear());
 translate();
+(function initMotion(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for(const entry of entries) {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, {threshold:.10,rootMargin:'0px 0px -18px 0px'});
+    for(const selector of ['.stats-strip','.section-header','.featured-project','.about-grid','.contact-panel','.more-coming']) {
+      document.querySelectorAll(selector).forEach(element=>{
+        element.classList.add('reveal-section');
+        observer.observe(element);
+      });
+    }
+  }
+  const bar = document.getElementById('reading-progress');
+  let scheduled = false;
+  function syncProgress(){
+    const max = Math.max(1,document.documentElement.scrollHeight - window.innerHeight);
+    bar.style.width = Math.min(100, Math.max(0, window.scrollY/max*100)).toFixed(2)+'%';
+    scheduled = false;
+  }
+  window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(syncProgress)}},{passive:true});
+  window.addEventListener('resize',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(syncProgress)}},{passive:true});
+  syncProgress();
+})();
 
 </script>
 </body>
