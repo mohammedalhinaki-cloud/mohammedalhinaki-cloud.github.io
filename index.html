@@ -273,9 +273,8 @@ function translate(){
   document.getElementById('lang-switch').setAttribute('aria-label',currentLang==='en'?'Switch to Arabic':'Switch to English');
   renderProjects();
 }
-document.getElementById('lang-switch').addEventListener('click',()=>{currentLang=currentLang==='en'?'ar':'en';try{localStorage.setItem('portfolio-language',currentLang)}catch(_){}translate()});
+document.getElementById('lang-switch').addEventListener('click',()=>{currentLang=currentLang==='en'?'ar':'en';translate()});
 for (const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{currentFilter=button.dataset.filter;document.querySelectorAll('.filter').forEach(x=>{const active=x===button;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});renderProjects()});
-try{if(localStorage.getItem('portfolio-language')==='ar')currentLang='ar'}catch(_){}
 document.getElementById('year').textContent=String(new Date().getFullYear());
 translate();
 (function initMotion(){
