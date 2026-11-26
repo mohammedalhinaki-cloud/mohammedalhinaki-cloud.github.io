@@ -253,7 +253,13 @@ const i18n = {
   }
 };
 const PROJECTS = window.PORTFOLIO_PROJECTS || [];
-let currentLang = 'en';
+function getDeviceLanguage(){
+  const languages = Array.isArray(navigator.languages) && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language || 'en'];
+  return languages.some(language => /^ar(?:-|$)/i.test(language)) ? 'ar' : 'en';
+}
+let currentLang = getDeviceLanguage();
 let currentFilter = 'all';
 const safe = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function projectCard(project,index = 0) {
