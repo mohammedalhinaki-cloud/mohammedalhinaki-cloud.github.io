@@ -209,9 +209,9 @@ window.PORTFOLIO_PROJECTS = [
     category: { en: 'Native Android application', ar: 'تطبيق أندرويد أصلي' },
     description: { en: 'An Arabic istighfar counter with open and goal-based modes, saved progress, and light/dark themes.', ar: 'تطبيق أندرويد لعدّ الاستغفار مع أهداف مخصصة وحفظ التقدم والثيمين الفاتح والداكن.' },
     tags: ['Kotlin', 'Jetpack Compose', 'Android'],
-    linkKind: 'code',
-    url: 'https://mohammedalhinaki-cloud.github.io/Astagfr/',
-    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Astagfr'
+    linkKind: 'download',
+    url: 'https://github.com/mohammedalhinaki-cloud/Astagfr-app/releases',
+    sourceUrl: 'https://github.com/mohammedalhinaki-cloud/Astagfr-app'
   }
 ];
 
@@ -236,7 +236,7 @@ const i18n = {
     factFocus:'FOCUS',factFocusValue:'Web experiences · UI / UX · Android',factTools:'TOOLS & TECHNOLOGIES',
 
     footerText:'Designed as a personal developer portfolio.',backTop:'Back to top ↑',
-    launch:'View live project', source:'View source on GitHub',showcase:'Project page',code:'View code', private:'Private repository',privateNote:'Code walkthrough available on request', platform:'ANDROID APPLICATION'
+    launch:'View live project', download:'Download app', source:'View source on GitHub',showcase:'Project page',code:'View code', private:'Private repository',privateNote:'Code walkthrough available on request', platform:'ANDROID APPLICATION'
   },
   ar: {
     skip:'الانتقال إلى المشاريع',navWork:'المشاريع',navAbout:'عني',
@@ -255,7 +255,7 @@ const i18n = {
     factFocus:'مجالات الاهتمام',factFocusValue:'تطوير الويب · تجربة المستخدم · أندرويد',factTools:'الأدوات والتقنيات',
 
     footerText:'معرض أعمال شخصي لمشاريع التطوير.',backTop:'العودة للأعلى ↑',
-    launch:'زيارة الموقع',source:'عرض الكود على GitHub',showcase:'صفحة المشروع',code:'عرض الكود',private:'مستودع خاص',privateNote:'يمكن شرح الكود عند الطلب',platform:'تطبيق أندرويد'
+    launch:'زيارة الموقع',download:'تحميل التطبيق',source:'عرض الكود على GitHub',showcase:'صفحة المشروع',code:'عرض الكود',private:'مستودع خاص',privateNote:'يمكن شرح الكود عند الطلب',platform:'تطبيق أندرويد'
   }
 };
 const PROJECTS = window.PORTFOLIO_PROJECTS || [];
@@ -270,7 +270,7 @@ let currentFilter = 'all';
 const safe = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function projectCard(project,index = 0) {
   const t=i18n[currentLang], name=project.title[currentLang], category=project.category[currentLang];
-  const linkText = project.linkKind === 'source' ? t.source : project.linkKind === 'code' ? t.code : t.launch;
+  const linkText = project.linkKind === 'source' ? t.source : project.linkKind === 'code' ? t.code : project.linkKind === 'download' ? t.download : t.launch;
   const link=project.url ? `<a class="project-open" href="${safe(project.url)}" target="_blank" rel="noopener noreferrer" aria-label="${safe(linkText)}: ${safe(name)}">${safe(linkText)} <span aria-hidden="true">↗</span></a>` : `<div class="private-label"><span class="lock-icon">◒</span> ${safe(t.private)}<small>${safe(t.privateNote)}</small></div>`;
   const showcaseLink = project.showcaseUrl ? `<a class="project-open project-source-link" href="${safe(project.showcaseUrl)}" target="_blank" rel="noopener noreferrer">${safe(t.showcase)} <span aria-hidden="true">↗</span></a>` : '';
   const sourceLink = project.sourceUrl ? `<a class="project-open project-source-link" href="${safe(project.sourceUrl)}" target="_blank" rel="noopener noreferrer">${safe(t.source)} <span aria-hidden="true">↗</span></a>` : '';
